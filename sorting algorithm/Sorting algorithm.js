@@ -26,7 +26,7 @@ let selectionSort = (arr) => {
   return arr;
 };
 
-//insertion sort
+//insertion sort, time complexity: O(n^2), space complexity: O(1)
 let insertionSort = (arr) => {
   for (let i = 1; i < arr.length; i++) {
     for (let j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
@@ -85,7 +85,9 @@ let merge = (left, right) => {
   return result;
 };
 
-//quick sort https://www.geeksforgeeks.org/quick-sort/
+//quick sort(https://www.geeksforgeeks.org/quick-sort/)
+//time comlexity: O(n^2), average O(nlogN)
+//space complexity: O(n), average O(logN)
 let swap = (arr, i, j) => {
   [arr[i], arr[j]] = [arr[j], arr[i]];
 };
@@ -105,9 +107,9 @@ let partition = (arr, l, r) => {
 
 let quickSort = (arr, l, r) => {
   if (l < r) {
-    let pi = partition(arr, l, r);
-    quickSort(arr, l, pi - 1);
-    quickSort(arr, pi + 1, r);
+    let partitionIndex = partition(arr, l, r);
+    quickSort(arr, l, partitionIndex - 1);
+    quickSort(arr, partitionIndex + 1, r);
   }
   return arr;
 };
