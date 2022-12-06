@@ -2,6 +2,8 @@
  * @param {number[][]} intervals
  * @return {number}
  */
+
+// sweep line
 var minMeetingRooms = function (intervals) {
   const timeMapArr = [];
   for (let i = 0; i < intervals.length; i++) {
