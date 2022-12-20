@@ -33,6 +33,7 @@ var getSkyline = function (buildings) {
     }
     let cur = 0;
     for (const key in curHeights) {
+      // key is string, key - 0 change string to number
       if (key - 0 > cur) {
         cur = key - 0;
       }
