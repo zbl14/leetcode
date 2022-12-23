@@ -5,6 +5,7 @@
  * @return {number}
  */
 var ladderLength = function (beginWord, endWord, wordList) {
+  //将wordList里所有word放进dict，若dict没有endWord直接返回0
   const dict = new Set();
   for (let i = 0; i < wordList.length; i++) {
     dict.add(wordList[i]);
@@ -13,6 +14,7 @@ var ladderLength = function (beginWord, endWord, wordList) {
 
   let q = [];
   let distance = 2;
+  //将第二个词加入到queue
   findNeighbors(q, beginWord);
   while (q.length) {
     let currLevel = q.length;
