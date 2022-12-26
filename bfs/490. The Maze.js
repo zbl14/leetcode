@@ -18,13 +18,16 @@ var hasPath = function (maze, start, destination) {
     for (let k = 0; k < 4; k++) {
       let i = cur[0] + directions[k],
         j = cur[1] + directions[k + 1];
+      // within boundary and not on the wall
       while (i >= 0 && j >= 0 && i < rows && j < cols && maze[i][j] != 1) {
         i += directions[k];
         j += directions[k + 1];
       }
+      // will be on the wall, take a step back
       i -= directions[k];
       j -= directions[k + 1];
 
+      //not visited, marke visted by setting it -1
       if (maze[i][j] != -1) {
         maze[i][j] = -1;
         queue.push([i, j]);
