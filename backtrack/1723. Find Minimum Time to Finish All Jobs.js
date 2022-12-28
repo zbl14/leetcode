@@ -8,7 +8,7 @@ var minimumTimeRequired = function (jobs, k) {
   if (jobs.length === k) return jobs.pop();
   let result = Infinity;
   const workerArr = Array(k).fill(0);
-  backtrack(jobs.length - 1, workerArr);
+  backtrack(jobs.length - 1, workerArr); // 从大的开始assign
   return result;
 
   function backtrack(lastJobIndex, workerArr) {
