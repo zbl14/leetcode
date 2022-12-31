@@ -9,11 +9,11 @@ var majorityElement = function (nums) {
 };
 
 function divide(nums, left, right) {
-  if (left === right) return nums[left];
+  if (left === right) return nums[left]; // only one element
   let mid = left + ((right - left) >> 1);
   const leftRes = divide(nums, left, mid);
   const rightRes = divide(nums, mid + 1, right);
-  if (leftRes === rightRes) return leftRes;
+  if (leftRes === rightRes) return leftRes; // 左右最高频element是一样的，则return该element
   const leftCount = conquer(nums, leftRes, left, right);
   const rightCount = conquer(nums, rightRes, left, right);
   return leftCount > rightCount ? leftRes : rightRes;
