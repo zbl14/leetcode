@@ -8,11 +8,12 @@
  * @param {number} k
  * @return {number}
  */
+
 var findKthLargest = function (nums, k) {
+  shuffleArray(nums);
   let l = 0,
     r = nums.length - 1,
     target = nums.length - k;
-  // divide
   while (l < r) {
     let mid = quickSelection(nums, l, r);
     if (mid == target) {
@@ -23,7 +24,6 @@ var findKthLargest = function (nums, k) {
   return nums[l];
 };
 
-// conquer
 const quickSelection = (nums, l, r) => {
   let pivot = nums[r];
   let wall = l;
@@ -39,4 +39,11 @@ const quickSelection = (nums, l, r) => {
 
 const swap = (nums, i, j) => {
   [nums[i], nums[j]] = [nums[j], nums[i]];
+};
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 };
