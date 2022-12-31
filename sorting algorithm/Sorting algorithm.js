@@ -67,7 +67,7 @@ let mergeSort = (arr) => {
   let right = arr.slice(mid);
   return merge(mergeSort(left), mergeSort(right));
 };
-let merge = (left, right) => {
+const merge = (left, right) => {
   let result = [];
   while (left.length && right.length) {
     if (left[0] < right[0]) {
