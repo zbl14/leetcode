@@ -88,24 +88,24 @@ const merge = (left, right) => {
 //quick sort(https://www.geeksforgeeks.org/quick-sort/)
 //time comlexity: O(n^2), average O(nlogN)
 //space complexity: O(n), average O(logN)
-let swap = (arr, i, j) => {
+const swap = (arr, i, j) => {
   [arr[i], arr[j]] = [arr[j], arr[i]];
 };
 
-let partition = (arr, l, r) => {
+const partition = (arr, l, r) => {
   let pivot = arr[r];
-  let i = l - 1;
-  for (let j = l; j < r; j++) {
-    if (arr[j] < pivot) {
-      i++;
-      swap(arr, i, j);
+  let wall = l;
+  for (let i = l; i < r; i++) {
+    if (arr[i] < pivot) {
+      swap(arr, wall, i);
+      wall++;
     }
   }
-  swap(arr, i + 1, r);
-  return i + 1;
+  swap(arr, wall, r);
+  return wall;
 };
 
-let quickSort = (arr, l, r) => {
+const quickSort = (arr, l, r) => {
   if (l < r) {
     let partitionIndex = partition(arr, l, r);
     quickSort(arr, l, partitionIndex - 1);
