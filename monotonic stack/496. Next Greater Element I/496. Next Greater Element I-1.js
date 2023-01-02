@@ -3,6 +3,8 @@
  * @param {number[]} nums2
  * @return {number[]}
  */
+
+// TC = O(n^2)
 var nextGreaterElement = function (nums1, nums2) {
   const result = [];
   for (let i = 0; i < nums1.length; i++) {
