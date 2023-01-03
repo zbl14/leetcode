@@ -14,7 +14,6 @@
 var nextLargerNodes = function (head) {
   const numArr = [];
   for (let cur = head; cur !== null; cur = cur.next) numArr.push(cur.val);
-  console.log(numArr);
   const stack = [];
   const res = [];
   for (let i = numArr.length - 1; i >= 0; i--) {
