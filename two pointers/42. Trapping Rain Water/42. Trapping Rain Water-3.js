@@ -13,7 +13,7 @@ var trap = function (height) {
   let res = 0;
   for (let i = 0; i < height.length; i++) {
     while (stack.length && height[i] > height[stack[stack.length - 1]]) {
-      const pre = stack.pop();
+      const pre = stack.pop(); // 湖底
       if (!stack.length) break;
       const minHeight = Math.min(height[stack[stack.length - 1]], height[i]);
       res += (minHeight - height[pre]) * (i - stack[stack.length - 1] - 1);
