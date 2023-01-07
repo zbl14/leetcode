@@ -4,6 +4,7 @@
  * @return {number}
  */
 // TC = O(n) SC = O(n)
+// 超高频的一条题目
 var lengthOfLongestSubstringKDistinct = function (s, k) {
   const map = new Map();
   let l = 0;
