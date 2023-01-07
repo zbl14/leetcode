@@ -4,7 +4,7 @@
  * @return {string}
  */
 var minWindow = function (s, t) {
-  //该处map的定义并不是windonw里面的char有什么，而是remaing char need to have
+  //该处map的定义并不是windonw里面的char有什么，而是remaing char need to have in the window
   const tMap = new Map();
   for (let i = 0; i < t.length; i++)
     tMap.has(t.charAt(i))
