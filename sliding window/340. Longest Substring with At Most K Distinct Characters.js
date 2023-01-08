@@ -11,7 +11,8 @@ var lengthOfLongestSubstringKDistinct = function (s, k) {
   let res = 0;
   for (let r = 0; r < s.length; r++) {
     const cur = s.charAt(r);
-    map.has(cur) ? map.set(cur, map.get(cur) + 1) : map.set(cur, 1);
+    // map.has(cur) ? map.set(cur, map.get(cur) + 1) : map.set(cur, 1);
+    map.set(cur, (map.get(cur) || 0) + 1);
     while (map.size > k) {
       const c = s.charAt(l);
       map.set(c, map.get(c) - 1);
