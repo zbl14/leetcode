@@ -1,71 +1,18 @@
+//常考：merge sort, quick sort(quick select), bucket sort, counting sort, heap sort
+//少考：pancake sort
+//不考：bubble sort, selection sort, insertion sort, shell sort, radix sort
+
 let x = [1, 3, 4, 2, 11, 4, 6, 7];
 
-//bubble sort
-let bubbleSort = (arr) => {
-  for (let i = 0; i < arr.length - 1; i++) {
-    for (let j = 0; j < arr.length - 1 - i; j++) {
-      if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-      }
-    }
-  }
-  return arr;
-};
-
-//selection sort
-let selectionSort = (arr) => {
-  for (let i = 0; i < arr.length - 1; i++) {
-    let minNumIndex = i;
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[minNumIndex]) {
-        minNumIndex = j;
-      }
-      [arr[i], arr[minNumIndex]] = [arr[minNumIndex], arr[i]];
-    }
-  }
-  return arr;
-};
-
-//insertion sort, time complexity: O(n^2), space complexity: O(1)
-let insertionSort = (arr) => {
-  for (let i = 1; i < arr.length; i++) {
-    for (let j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
-      [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
-    }
-  }
-  return arr;
-};
-
-//shell sort
-function shellSort(arr) {
-  var len = arr.length,
-    temp,
-    gap = 1;
-  while (gap < len / 3) {
-    //动态定义间隔序列
-    gap = gap * 3 + 1;
-  }
-  for (gap; gap > 0; gap = Math.floor(gap / 3)) {
-    for (var i = gap; i < len; i++) {
-      temp = arr[i];
-      for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) {
-        arr[j + gap] = arr[j];
-      }
-      arr[j + gap] = temp;
-    }
-  }
-  return arr;
-}
-
-//merge sort
-let mergeSort = (arr) => {
+//merge sort, TC = O(nlogn)
+const mergeSort = (arr) => {
   if (arr.length == 1) {
     return arr;
   }
-  let mid = arr.length >> 1;
-  let left = arr.slice(0, mid);
-  let right = arr.slice(mid);
-  return merge(mergeSort(left), mergeSort(right));
+  const mid = arr.length >> 1;
+  const leftRes = arr.slice(0, mid);
+  const rightRes = arr.slice(mid);
+  return merge(mergeSort(leftRes), mergeSort(rightRes));
 };
 const merge = (left, right) => {
   let result = [];
@@ -76,17 +23,13 @@ const merge = (left, right) => {
       result.push(right.shift());
     }
   }
-  while (left.length) {
-    result.push(left.shift());
-  }
-  while (right.length) {
-    result.push(right.shift());
-  }
+  while (left.length) result.push(left.shift());
+  while (right.length) result.push(right.shift());
   return result;
 };
 
 //quick sort(https://www.geeksforgeeks.org/quick-sort/)
-//time comlexity: O(n^2), average O(nlogN)
+//time comlexity: average O(nlogN), worst case O(n^2)
 //space complexity: O(n), average O(logN)
 const swap = (arr, i, j) => {
   [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -112,6 +55,17 @@ const quickSort = (arr, l, r) => {
     quickSort(arr, partitionIndex + 1, r);
   }
   return arr;
+};
+
+const getRandomPivotIndex = (l, r) => {
+  return l + Math.floor(Math.random() * (r - l + 1));
+};
+
+const shuffleArray = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    const j = Math.floor(Math.random() * (i + 1));
+    swap(array, i, j);
+  }
 };
 
 //counting sort
@@ -142,35 +96,63 @@ let countingSort = (arr) => {
   return arr;
 };
 
-// dfsTemplate
-function dfsTemplate(root) {
-  let res;
-  let start;
-  let dfs = function (node, currentResult) {
-    if (node == null) {
-      return;
+//bubble sort, TC = O(n^2), SC = O(1)
+//核心为相邻的两个数字交换位置，每次从头遍历一次
+let bubbleSort = (arr) => {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
     }
-    //update currentResult
-
-    if (node.left == null && node.right == null) {
-      //update res
-    }
-    dfs(node.left, currentResult);
-    dfs(node.right, currentResult);
-  };
-  dfs(root, start);
-  return res;
-}
-
-const canPaint = function () {
-  const obj = {
-    paint: function (color) {
-      return `Paints ${color}!.`;
-    },
-  };
-  return obj;
+  }
+  return arr;
 };
 
-const painter1 = canPaint();
+//selection sort, TC = O(n^2), SC = O(1)
+//核心每次从未选的数字里，拿出最小的
+let selectionSort = (arr) => {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let minNumIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minNumIndex]) {
+        minNumIndex = j;
+      }
+      [arr[i], arr[minNumIndex]] = [arr[minNumIndex], arr[i]];
+    }
+  }
+  return arr;
+};
 
-painter1.paint("green");
+//insertion sort, TC = O(n^2), SC = O(1)
+//核心为遍历每个元素，将其插入正确位置上，比左边的元素大，比右边的元素小（从小到大排）
+let insertionSort = (arr) => {
+  for (let i = 1; i < arr.length; i++) {
+    for (let j = i; j > 0 && arr[j] < arr[j - 1]; j--) {
+      //往前扫，看是否有比当前数字大的，若有则把当前元素往前推
+      [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+    }
+  }
+  return arr;
+};
+
+//shell sort, TC = O(n^2)
+function shellSort(arr) {
+  var len = arr.length,
+    temp,
+    gap = 1;
+  while (gap < len / 3) {
+    //动态定义间隔序列
+    gap = gap * 3 + 1;
+  }
+  for (gap; gap > 0; gap = Math.floor(gap / 3)) {
+    for (var i = gap; i < len; i++) {
+      temp = arr[i];
+      for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) {
+        arr[j + gap] = arr[j];
+      }
+      arr[j + gap] = temp;
+    }
+  }
+  return arr;
+}

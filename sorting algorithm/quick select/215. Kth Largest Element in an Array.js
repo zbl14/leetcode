@@ -8,7 +8,9 @@
  * @param {number} k
  * @return {number}
  */
+
 var findKthLargest = function (nums, k) {
+  shuffleArray(nums);
   let l = 0,
     r = nums.length - 1,
     target = nums.length - k;
@@ -38,3 +40,10 @@ const quickSelection = (nums, l, r) => {
 const swap = (nums, i, j) => {
   [nums[i], nums[j]] = [nums[j], nums[i]];
 };
+
+function shuffleArray(array) {
+  for (let i = 0; i < array.length; i++) {
+    const j = Math.floor(Math.random() * (i + 1));
+    swap(array, i, j);
+  }
+}
