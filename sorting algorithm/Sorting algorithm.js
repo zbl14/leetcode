@@ -68,7 +68,7 @@ const shuffleArray = (array) => {
   }
 };
 
-//counting sort
+//counting sort, TC = O(n+k), n为有多少个element，k为有多少种element
 let countingSort = (arr) => {
   let sortedIndex = 0;
   let bucket = {};
