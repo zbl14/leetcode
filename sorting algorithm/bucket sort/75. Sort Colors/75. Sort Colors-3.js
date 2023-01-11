@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-//双pivot
+//dual pivot
 var sortColors = function (nums) {
   let left = 0;
   let right = nums.length - 1;
