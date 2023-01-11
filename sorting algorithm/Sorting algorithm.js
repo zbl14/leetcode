@@ -29,8 +29,9 @@ const merge = (left, right) => {
 };
 
 //quick sort(https://www.geeksforgeeks.org/quick-sort/)
-//time comlexity: average O(nlogN), worst case O(n^2)
-//space complexity: O(n), average O(logN)
+//TC: average O(nlogN), worst case O(n^2)
+//SC: O(n), average O(logN)
+//quick select TC = average O(n)
 const swap = (arr, i, j) => {
   [arr[i], arr[j]] = [arr[j], arr[i]];
 };
@@ -95,6 +96,27 @@ let countingSort = (arr) => {
   }
   return arr;
 };
+
+function countingSort(arr) {
+  var bucket = new Array(),
+    sortedIndex = 0,
+    arrLen = arr.length;
+  for (var i = 0; i < arrLen; i++) {
+    if (!bucket[arr[i]]) {
+      bucket[arr[i]] = 0;
+    }
+    bucket[arr[i]]++;
+  }
+
+  for (var j = 0; j < bucket.length; j++) {
+    while (bucket[j] > 0) {
+      arr[sortedIndex++] = j;
+      bucket[j]--;
+    }
+  }
+
+  return arr;
+}
 
 //bucket sort, TC = O(n)
 //核心为找共性，放到同一个桶里，然后把桶里的排序，因为桶里的元素小，用什么排序方式都可以
