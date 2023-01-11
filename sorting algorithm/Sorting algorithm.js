@@ -96,6 +96,9 @@ let countingSort = (arr) => {
   return arr;
 };
 
+//bucket sort, TC = O(n)
+//核心为找共性，放到同一个桶里，然后把桶里的排序，因为桶里的元素小，用什么排序方式都可以
+
 //bubble sort, TC = O(n^2), SC = O(1)
 //核心为相邻的两个数字交换位置，每次从头遍历一次
 let bubbleSort = (arr) => {
