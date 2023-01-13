@@ -27,7 +27,7 @@ const minHeapify = (arr, n, i) => {
 // main function to do heap sort
 const heapSort = (arr, n) => {
   // Build heap (rearrange array)
-  for (let i = parseInt(n / 2 - 1); i >= 0; i--) {
+  for (let i = Math.floor(n / 2 - 1); i >= 0; i--) {
     minHeapify(arr, n, i);
   }
 
