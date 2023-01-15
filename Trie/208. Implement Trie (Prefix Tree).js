@@ -29,7 +29,7 @@ class Trie {
       }
       curr = curr.children[char];
     }
-    return curr.isEndWord == true ? true : false;
+    return curr.isEndWord;
   }
 
   startsWith(prefix) {
