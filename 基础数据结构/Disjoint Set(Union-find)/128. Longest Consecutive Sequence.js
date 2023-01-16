@@ -6,7 +6,7 @@ var longestConsecutive = function (nums) {
   let dsu = new DSU(nums.length);
   let visited = new Map();
   for (let i = 0; i < nums.length; i++) {
-    if (visited.has(nums[i])) continue;
+    if (visited.has(nums[i])) continue; // num可能重复
     visited.set(nums[i], i);
     if (visited.has(nums[i] + 1)) dsu.union(visited.get(nums[i] + 1), i);
     if (visited.has(nums[i] - 1)) dsu.union(visited.get(nums[i] - 1), i);
