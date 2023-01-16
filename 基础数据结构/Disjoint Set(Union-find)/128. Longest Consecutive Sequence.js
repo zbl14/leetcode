@@ -8,7 +8,6 @@ var longestConsecutive = function (nums) {
   for (let i = 0; i < nums.length; i++) {
     if (visited.has(nums[i])) continue;
     visited.set(nums[i], i);
-    console.log(visited, i);
     if (visited.has(nums[i] + 1)) dsu.union(visited.get(nums[i] + 1), i);
     if (visited.has(nums[i] - 1)) dsu.union(visited.get(nums[i] - 1), i);
     console.log(dsu);
