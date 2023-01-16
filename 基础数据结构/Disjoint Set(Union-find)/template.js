@@ -35,15 +35,15 @@ class DSU {
   }
 
   union(x, y) {
-    x = this.find(x);
-    y = this.find(y);
-    if (x === y) return;
+    let rootX = this.find(x);
+    let rootY = this.find(y);
+    if (rootX === rootY) return;
 
-    if (this.size[x] < this.size[y]) {
-      [x, y] = [y, x];
+    if (this.size[rootX] < this.size[rootY]) {
+      [rootX, rootY] = [rootY, rootX];
     }
-    this.parent[y] = x;
-    this.size[x] += this.size[y];
+    this.parent[rootY] = rootX;
+    this.size[rootX] += this.size[rootY];
   }
 }
 
