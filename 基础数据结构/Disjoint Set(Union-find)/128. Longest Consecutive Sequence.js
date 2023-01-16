@@ -2,15 +2,16 @@
  * @param {number[]} nums
  * @return {number}
  */
-// TC = O(n), SC = O(n+n), one for parent, one for size
 var longestConsecutive = function (nums) {
   let dsu = new DSU(nums.length);
   let visited = new Map();
   for (let i = 0; i < nums.length; i++) {
     if (visited.has(nums[i])) continue;
     visited.set(nums[i], i);
-    if (visited.has(nums[i] + 1)) dsu.union(i, visited.get(nums[i] + 1));
-    if (visited.has(nums[i] - 1)) dsu.union(i, visited.get(nums[i] - 1));
+    console.log(visited, i);
+    if (visited.has(nums[i] + 1)) dsu.union(visited.get(nums[i] + 1), i);
+    if (visited.has(nums[i] - 1)) dsu.union(visited.get(nums[i] - 1), i);
+    console.log(dsu);
   }
   return dsu.findMax();
 };
