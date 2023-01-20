@@ -1,6 +1,6 @@
 // DSU template with path compression
 // if m operations, either union and find, are applied to n elements,
-// the total run time is O(m log* n), where log* is the iterated lorgarithm
+// the total run time is O(m log* n), where log* is the iterated logarithm
 class DSU {
   constructor(n) {
     this.parent = new Array(n);
@@ -15,7 +15,9 @@ class DSU {
     return this.parent[x];
   }
   union(x, y) {
-    this.parent[this.find(x)] = this.find(y);
+    let rootX = this.find(x);
+    let rootY = this.find(y);
+    this.parent[rootX] = rootY;
   }
 }
 

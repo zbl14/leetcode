@@ -23,11 +23,12 @@ var reverseBetween = function (head, left, right) {
     i++;
   }
   let node = prev;
-  while (i++ <= right) {
+  while (i <= right) {
     let next = cur.next;
     cur.next = prev;
     prev = cur;
     cur = next;
+    i++;
   }
   node.next.next = cur;
   node.next = prev;
