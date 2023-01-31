@@ -13,19 +13,17 @@
 var zigzagLevelOrder = function (root) {
   const res = [];
   const q = [];
-  let height = 0;
   if (root !== null) q.push(root);
   while (q.length !== 0) {
     const size = q.length;
     const curLevel = [];
     for (let i = 0; i < size; i++) {
       const cur = q.shift();
-      height % 2 === 0 ? curLevel.push(cur.val) : curLevel.unshift(cur.val);
+      res.length % 2 === 0 ? curLevel.push(cur.val) : curLevel.unshift(cur.val);
       if (cur.left !== null) q.push(cur.left);
       if (cur.right !== null) q.push(cur.right);
     }
     res.push(curLevel);
-    height++;
   }
   return res;
 };
