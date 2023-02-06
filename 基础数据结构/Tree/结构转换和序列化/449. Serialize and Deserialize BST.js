@@ -27,10 +27,8 @@ var serialize = function (root) {
  * @return {TreeNode}
  */
 var deserialize = function (data) {
-  console.log(data, typeof data, data.length);
   if (data === "") return null;
   let q = data.split(",").map(Number);
-  console.log(q);
   return dfs(q, -Infinity, Infinity);
 };
 
