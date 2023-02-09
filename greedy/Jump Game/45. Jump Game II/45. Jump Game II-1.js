@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number}
  */
+// greedy
 var jump = function (nums) {
   let curFurthest = 0;
   let curEnd = 0;
