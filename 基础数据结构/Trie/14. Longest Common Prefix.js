@@ -39,11 +39,14 @@ class Trie {
     let stack = [this.root];
     while (stack.length) {
       const curNode = stack.pop();
+      // When the current node has multiple children,
+      // it means that at that point,
+      // the words stored in the Trie diverge from each other,
+      // and so the prefix up to that point is the longest common prefix.
       if (curNode.children.size > 1 || curNode.isEndWord) {
         return prefix;
       }
       curNode.children.forEach((childNode, childKey) => {
-        console.log(childNode, childKey);
         prefix += childKey;
         stack.push(childNode);
       });
