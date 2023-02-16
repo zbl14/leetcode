@@ -12,25 +12,23 @@
  */
 var binaryTreePaths = function (root) {
   const output = [];
-  if (!root) return output;
-  dfs(root, output, []);
+  if (root === null) return output;
+  backtracking(root, output, []);
   return output;
 };
 
-const dfs = (root, paths, currPath) => {
+const backtracking = (root, paths, currPath) => {
   currPath.push(root.val);
   if (root.left === null && root.right === null) {
     paths.push(currPath.join("->"));
     return;
   }
-  // backtracking
   if (root.left !== null) {
-    dfs(root.left, paths, currPath);
+    backtracking(root.left, paths, currPath);
     currPath.pop();
   }
-  // backtracking
   if (root.right !== null) {
-    dfs(root.right, paths, currPath);
+    backtracking(root.right, paths, currPath);
     currPath.pop();
   }
 };
