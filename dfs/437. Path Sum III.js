@@ -11,15 +11,16 @@
  * @param {number} targetSum
  * @return {number}
  */
-var pathSum = function (root, sum) {
+var pathSum = function (root, targetSum) {
   const map = new Map();
   let count = 0;
 
   const preoderTraversal = (node, currentSum) => {
     if (node === null) return;
     currentSum += node.val;
-    if (currentSum === sum) count++;
-    if (map.has(currentSum - sum)) count += map.get(currentSum - sum);
+    if (currentSum === targetSum) count++;
+    if (map.has(currentSum - targetSum))
+      count += map.get(currentSum - targetSum);
     map.set(currentSum, map.get(currentSum) + 1 || 1);
 
     preoderTraversal(node.left, currentSum);
