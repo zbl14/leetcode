@@ -23,9 +23,9 @@ var splitArray = function (nums, k) {
     for (let i = 0; i < nums.length; i++) {
       curSum += nums[i];
       if (curSum > subArrSum) {
-        curSum = nums[i];
         count++;
         if (count > k) return false;
+        curSum = nums[i];
       }
     }
     return true;

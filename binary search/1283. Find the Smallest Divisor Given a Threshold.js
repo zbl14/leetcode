@@ -4,25 +4,21 @@
  * @return {number}
  */
 var smallestDivisor = function (nums, threshold) {
-  return binary(1, 10e6);
+  return binary(1, Math.max(...nums));
 
-  function binary(low, hight) {
+  function binary(low, high) {
     let mid;
-    while (low <= hight) {
-      mid = low + ((hight - low) >> 1);
-      console.log(low, hight);
-      isValid(mid) ? (hight = mid - 1) : (low = mid + 1);
+    while (low <= high) {
+      mid = low + ((high - low) >> 1);
+      isValid(mid) ? (high = mid - 1) : (low = mid + 1);
     }
     return low;
   }
 
   function isValid(curDivisor) {
-    let curSum = nums
+    const curSum = nums
       .map((e) => Math.ceil(e / curDivisor))
       .reduce((a, b) => a + b);
-    if (curSum <= threshold) {
-      return true;
-    }
-    return false;
+    return curSum <= threshold;
   }
 };
