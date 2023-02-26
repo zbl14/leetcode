@@ -9,6 +9,7 @@ const reverseList = (list) => {
   return prev;
 };
 
+// slow为firstHalfEnd
 const findMid = (list) => {
   let fast = list;
   let slow = list;
@@ -18,3 +19,14 @@ const findMid = (list) => {
   }
   return slow;
 };
+
+// slow为SecondHalfStart
+// const findMid = (list) => {
+//   let slow = list;
+//   let fast = list;
+//   while(slow && fast && fast.next ){
+//       slow = slow.next
+//       fast = fast.next.next
+//   }
+//   return slow;
+// };
