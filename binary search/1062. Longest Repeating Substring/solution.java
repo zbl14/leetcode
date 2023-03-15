@@ -1,6 +1,8 @@
 import java.util.HashSet;
 
 // 1062. Longest Repeating Substring;
+// 类似猜数字，但这次猜的是substring的长度
+// TC = O(nlogn), SC = O(n)
 
 class Solution {
   public int longestRepeatingSubstring(String s) {
