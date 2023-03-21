@@ -1,8 +1,5 @@
 package 基础数据结构.Trie;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class Trie {
   TrieNode root;
 
@@ -13,8 +10,9 @@ class Trie {
   public void insert(String word) {
     TrieNode node = root;
     for (char c : word.toCharArray()) {
-      node.children.computeIfAbsent(c, k -> new TrieNode());
-      node = node.children.get(c);
+      if (node.children[c - 'a'] == null)
+        node.children[c - 'a'] = new TrieNode();
+      node = node.children[c - 'a'];
     }
     node.isWord = true;
   }
@@ -22,9 +20,9 @@ class Trie {
   public boolean search(String word) {
     TrieNode node = root;
     for (char c : word.toCharArray()) {
-      node = node.children.get(c);
-      if (node == null)
+      if (node.children[c - 'a'] == null)
         return false;
+      node = node.children[c - 'a'];
     }
     return node.isWord;
   }
@@ -32,19 +30,20 @@ class Trie {
   public boolean startsWith(String prefix) {
     TrieNode node = root;
     for (char c : prefix.toCharArray()) {
-      node = node.children.get(c);
-      if (node == null)
+      if (node.children[c - 'a'] == null)
         return false;
+      node = node.children[c - 'a'];
     }
     return true;
   }
+
 }
 
 class TrieNode {
-  Map<Character, TrieNode> children;
+  TrieNode[] children;
   boolean isWord;
 
   public TrieNode() {
-    children = new HashMap<>();
+    children = new TrieNode[26];
   }
 }
