@@ -1,5 +1,8 @@
 // dijkstra和bfs都是解决图最短路径的方法，dijkstra用于有权重的图，
 // 将BFS中使用的队列数据结构替换成了优先队列
+// Dijkstra's algorithm is used to find the shortest path 
+// from a single source to all other vertices in a graph.
+
 // TC = O(N^2logN), dijkstra has a TC of O(ElogV)
 // SC = O(N^2), because of the `distance` array
 class Solution {
