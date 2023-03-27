@@ -1,3 +1,9 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+
 class Solution {
   public int openLock(String[] deadends, String target) {
     if (target.equals("0000"))
