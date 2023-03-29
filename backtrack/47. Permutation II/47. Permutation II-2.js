@@ -14,8 +14,8 @@ var permuteUnique = function (nums) {
       res.push([...curList]);
     } else {
       for (let i = 0; i < nums.length; i++) {
-        // when a number has the same value with its previous, we can
-        // use this number only if his previous is used
+        // when a number has the same value with its previous, 
+        // we can use this number only if his previous is used
         if (used[i] || (i > 0 && nums[i] === nums[i - 1] && used[i - 1]))
           continue;
         used[i] = true;
