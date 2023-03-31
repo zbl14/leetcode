@@ -14,31 +14,24 @@
  * }
  */
 class Solution {
-  public int maxDepth(TreeNode root) {
-    if (root == null)
-      return 0;
-    int res = 0;
+  public List<Integer> largestValues(TreeNode root) {
+    List<Integer> res = new ArrayList<>();
     Queue<TreeNode> q = new LinkedList<>();
-    q.offer(root);
+    if (root != null)
+      q.offer(root);
     while (!q.isEmpty()) {
       int size = q.size();
+      int maxInRow = Integer.MIN_VALUE;
       for (int i = 0; i < size; i++) {
         TreeNode cur = q.poll();
+        maxInRow = Math.max(maxInRow, cur.val);
         if (cur.left != null)
           q.offer(cur.left);
         if (cur.right != null)
           q.offer(cur.right);
       }
-      res++;
+      res.add(maxInRow);
     }
     return res;
-  }
-}
-
-class Solution {
-  public int maxDepth(TreeNode root) {
-    if (root == null)
-      return 0;
-    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
   }
 }
