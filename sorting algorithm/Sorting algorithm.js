@@ -49,9 +49,12 @@ const partition = (arr, l, r) => {
   return wall;
 };
 
-const quickSort = (arr, l, r) => {
+const quickSort = (arr) => {
+  // shuffleArray(arr);
+  let l = 0;
+  let r = arr.length - 1;
   if (l < r) {
-    let partitionIndex = partition(arr, l, r);
+    const partitionIndex = partition(arr, l, r);
     quickSort(arr, l, partitionIndex - 1);
     quickSort(arr, partitionIndex + 1, r);
   }
