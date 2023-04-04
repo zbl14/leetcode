@@ -14,12 +14,13 @@ class Solution {
       res.add(new ArrayList<>(temp));
       return;
     }
-    if (idx >= candidates.length || total > target) {
+    if (total > target) {
       return;
     }
-    temp.add(candidates[idx]);
-    backtracking(idx, temp, total + candidates[idx], candidates, target, res);
-    temp.remove(temp.size() - 1);
-    backtracking(idx + 1, temp, total, candidates, target, res);
+    for (int i = idx; i < candidates.length; i++) {
+      temp.add(candidates[i]);
+      backtracking(i, temp, total + candidates[i], candidates, target, res);
+      temp.remove(temp.size() - 1);
+    }
   }
 }
