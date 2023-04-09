@@ -13,6 +13,7 @@
  * }
  * }
  */
+// bfs
 class Solution {
   public int deepestLeavesSum(TreeNode root) {
     int levelSum = 0;
@@ -35,3 +36,29 @@ class Solution {
     return levelSum;
   }
 }
+
+// dfs top down
+// class Solution {
+// int deepestSum = 0, depth = 0;
+
+// public int deepestLeavesSum(TreeNode root) {
+// dfs(root, 0);
+// return deepestSum;
+// }
+
+// private void dfs(TreeNode node, int currDepth) {
+// if (node == null) {
+// return;
+// }
+// if (node.left == null && node.right == null) {
+// if (depth < currDepth) {
+// deepestSum = node.val;
+// depth = currDepth;
+// } else if (depth == currDepth) {
+// deepestSum += node.val;
+// }
+// }
+// dfs(node.left, currDepth + 1);
+// dfs(node.right, currDepth + 1);
+// }
+// }
