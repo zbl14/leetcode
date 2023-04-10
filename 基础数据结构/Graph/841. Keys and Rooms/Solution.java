@@ -1,3 +1,7 @@
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 // dfs recursive
 class Solution {
   private Set<Integer> visited = new HashSet<>();
