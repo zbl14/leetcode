@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 class Solution {
   private List<String> res = new ArrayList<>();
   private Map<Character, String> btns = Map.of(
