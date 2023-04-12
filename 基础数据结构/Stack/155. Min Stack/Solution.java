@@ -10,7 +10,7 @@ class MinStack {
   public void push(int val) {
     if (stack.isEmpty()) {
       stack.push(new int[] { val, val });
-      return;
+      return; // exit the method early
     }
     int min = stack.peek()[1];
     stack.push(new int[] { val, Math.min(min, val) });
