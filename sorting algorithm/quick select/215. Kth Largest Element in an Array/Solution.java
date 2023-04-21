@@ -33,17 +33,32 @@ class Solution {
       divide(nums, l, pos - 1, k);
   }
 
+  // private int quickSelect(int[] nums, int l, int r) {
+  // int pivot = nums[r];
+  // int wall = l;
+  // for (int i = l; i < r; i++) {
+  // if (nums[i] < pivot) {
+  // swap(nums, i, wall);
+  // wall++;
+  // }
+  // }
+  // swap(nums, wall, r);
+  // return wall;
+  // }
+
   private int quickSelect(int[] nums, int l, int r) {
-    int pivot = nums[r];
-    int wall = l;
-    for (int i = l; i < r; i++) {
-      if (nums[i] < pivot) {
-        swap(nums, i, wall);
-        wall++;
-      }
+    int pivot = l;
+    while (l <= r) {
+      while (l <= r && nums[l] <= nums[pivot])
+        l++;
+      while (l <= r && nums[r] > nums[pivot])
+        r--;
+      if (l > r)
+        break;
+      swap(nums, l, r);
     }
-    swap(nums, wall, r);
-    return wall;
+    swap(nums, r, pivot);
+    return r;
   }
 
   private void swap(int[] nums, int i, int j) {
