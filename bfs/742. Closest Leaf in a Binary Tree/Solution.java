@@ -1,3 +1,5 @@
+// TC = O(n), SC = O(n)
+// 将树转换成无向图（dfs），通过bfs找最短路径
 class Solution {
   public int findClosestLeaf(TreeNode root, int k) {
     Map<TreeNode, List<TreeNode>> graph = new HashMap<>();
