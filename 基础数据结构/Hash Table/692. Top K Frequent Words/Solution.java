@@ -14,7 +14,7 @@ class Solution {
       }
     });
     for (String word : map.keySet()) {
-      pq.add(word);
+      pq.offer(word);
       if (pq.size() > k) {
         pq.poll();
       }
