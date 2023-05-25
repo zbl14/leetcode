@@ -13,6 +13,8 @@
  * }
  * }
  */
+// TC = O(n)
+// SC = O(w), where w is the maximum width of a tree, worse scenario is O(n)
 class Solution {
   public int widthOfBinaryTree(TreeNode root) {
     if (root == null)
