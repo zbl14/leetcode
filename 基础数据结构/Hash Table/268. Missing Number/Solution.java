@@ -25,6 +25,16 @@
 
 // TC = O(n), SC = O(1)
 class Solution {
+  public static void main(String[] args) {
+    Solution solution = new Solution();
+
+    int arr[] = { 9, 6, 4, 2, 3, 5, 7, 0, 1 };
+
+    int res = solution.missingNumber(arr);
+
+    System.out.println(res);
+  }
+
   public int missingNumber(int[] nums) {
     int expectedSum = nums.length * (nums.length + 1) / 2;
     int sum = 0;
