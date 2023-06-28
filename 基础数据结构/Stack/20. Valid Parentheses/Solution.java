@@ -17,7 +17,21 @@
 //     }
 // }
 
+import java.util.Stack;
+
 class Solution {
+  public static void main(String[] args) {
+    String str = "(({{[]}}))";
+    String str1 = "]){}";
+    String str2 = "(])";
+
+    Solution solution = new Solution();
+
+    System.out.println(solution.isValid(str));
+    System.out.println(solution.isValid(str1));
+    System.out.println(solution.isValid(str2));
+  }
+
   public boolean isValid(String s) {
     if (s.length() % 2 != 0 || s.length() == 0)
       return false;
